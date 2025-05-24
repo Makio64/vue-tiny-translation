@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import TinyTranslation from 'vue3-tiny-translation'
+import TinyTranslation from 'vue-tiny-translation'
 import App from './App.vue'
 
 const app = createApp(App)

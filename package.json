@@ -1,5 +1,5 @@
 {
-  "name": "vue3-tiny-translation",
+  "name": "vue-tiny-translation",
   "version": "1.0.0",
   "description": "A minimalist reactive translation plugin for Vue 3. Super lightweight (0.32KB gzipped).",
   "type": "module",
@@ -31,12 +31,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Makio64/vue3-tiny-translation.git"
+    "url": "https://github.com/Makio64/vue-tiny-translation.git"
   },
   "bugs": {
-    "url": "https://github.com/Makio64/vue3-tiny-translation/issues"
+    "url": "https://github.com/Makio64/vue-tiny-translation/issues"
   },
-  "homepage": "https://github.com/Makio64/vue3-tiny-translation#readme",
+  "homepage": "https://github.com/Makio64/vue-tiny-translation#readme",
   "peerDependencies": {
     "vue": "^3.0.0"
   },

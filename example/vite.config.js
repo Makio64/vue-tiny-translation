@@ -6,7 +6,7 @@ export default defineConfig({
   resolve: {
     alias: {
       // Use the plugin from parent directory during development
-      'vue3-tiny-translation': '../src/index.js'
+      'vue-tiny-translation': '../src/index.js'
     }
   }
 }) 

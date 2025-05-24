@@ -1,6 +1,6 @@
 # Vue3 Tiny Translation - Example 🌍✨
 
-This is a working example demonstrating how to use the vue3-tiny-translation plugin.
+This is a working example demonstrating how to use the vue-tiny-translation plugin.
 
 ## Features Demonstrated
 
