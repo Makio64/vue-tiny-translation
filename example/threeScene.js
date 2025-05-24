@@ -46,17 +46,9 @@ export class ThreeScene {
     this.controls.dampingFactor = 0.05
     this.controls.enableZoom = false
     this.controls.enablePan = false
-    this.controls.enableRotate = true
-    
-    // Mobile-specific adjustments
-    if (this.isMobile()) {
-      // On mobile: disable controls entirely to allow normal scrolling
-      this.controls.enabled = false
-    } else {
-      // Desktop: allow limited vertical rotation
-      this.controls.minPolarAngle = Math.PI * 0.4  
-      this.controls.maxPolarAngle = Math.PI * 0.6
-    }
+    this.controls.enableRotate = !isMobile()
+		this.controls.minPolarAngle = Math.PI * 0.4  
+		this.controls.maxPolarAngle = Math.PI * 0.6
   }
 
   isMobile() {
@@ -66,31 +58,6 @@ export class ThreeScene {
   }
 
   createFloatingElements() {
-    // Create floating flags
-    this.languages.forEach((lang, index) => {
-      const element = document.createElement('div')
-      element.className = 'floating-flag'
-      element.textContent = lang.flag
-      element.style.fontSize = '32px'
-      element.style.pointerEvents = 'none'
-      
-      const object = new CSS3DObject(element)
-      
-      // Random position
-      const radius = 350 + Math.random()*80
-      const angle = (index / this.languages.length) * Math.PI * 2
-      const y = (Math.random() - 0.5) * 400 // Random Y between -200 and 200
-      
-      object.position.x = Math.cos(angle) * radius
-      object.position.z = Math.sin(angle) * radius
-      object.position.y = y
-      
-      // Look at center
-      object.lookAt(0, y, 0)
-      
-      this.scene.add(object)
-      this.languageObjects.push({ object, angle, radius, speed: 0.01 + Math.random() * 0.01 })
-    })
   }
 
   animate = () => {
