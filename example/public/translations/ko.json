@@ -18,6 +18,5 @@
   "demo.result": "결과",
   "demo.api_result": "API에서 안녕하세요! ❤️🤍💙",
   "docs.button": "문서 보기",
-  "footer.message": "Vue3 Tiny Translation으로 ❤️를 담아 제작",
-  "attribution": "<a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>에 의해 제작됨"
-} 
+  "footer.message": "<a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>가 ❤️로 제작"
+}

@@ -18,6 +18,5 @@
   "demo.result": "Résultat",
   "demo.api_result": "Salut de l'API made in France! 🇫🇷🥖",
   "docs.button": "Voir la Doc",
-  "footer.message": "Construit avec ❤️ en utilisant Vue3 Tiny Translation",
-  "attribution": "Créé par <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>"
-} 
+  "footer.message": "Construit avec ❤️ par <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>"
+}

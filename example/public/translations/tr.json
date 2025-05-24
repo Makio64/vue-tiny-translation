@@ -18,6 +18,5 @@
   "demo.result": "Sonuç",
   "demo.api_result": "API'den merhaba! ❤️🤍",
   "docs.button": "Belgeleri Görüntüle",
-  "footer.message": "Vue3 Tiny Translation kullanarak ❤️ ile yapıldı",
-  "attribution": "<a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a> tarafından oluşturuldu"
-} 
+  "footer.message": "❤️ ile <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a> tarafından yapıldı"
+}

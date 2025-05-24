@@ -18,6 +18,5 @@
   "demo.result": "Αποτέλεσμα",
   "demo.api_result": "Γεια σας από το API! 🤍💙",
   "docs.button": "Δες τα Έγγραφα",
-  "footer.message": "Δημιουργήθηκε με ❤️ χρησιμοποιώντας Vue3 Tiny Translation",
-  "attribution": "Δημιουργήθηκε από <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>"
-} 
+  "footer.message": "Δημιουργήθηκε με ❤️ από τον <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>"
+}

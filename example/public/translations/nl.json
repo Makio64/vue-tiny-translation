@@ -18,6 +18,5 @@
   "demo.result": "Resultaat",
   "demo.api_result": "Hallo van de API! ❤️🤍💙",
   "docs.button": "Bekijk Docs",
-  "footer.message": "Gebouwd met ❤️ met behulp van Vue3 Tiny Translation",
-  "attribution": "Gemaakt door <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>"
-} 
+  "footer.message": "Gemaakt met ❤️ door <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>"
+}

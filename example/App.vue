@@ -89,8 +89,7 @@
         </main>
 
         <footer class="footer">
-          <p>{{ $t('footer.message') }}</p>
-          <p class="attribution" v-html="$t('attribution')"></p>
+          <p v-html="$t('footer.message')"></p>
         </footer>
       </div>
     </template>

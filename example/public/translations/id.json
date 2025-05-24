@@ -18,6 +18,5 @@
   "demo.result": "Hasil",
   "demo.api_result": "Halo dari API! ❤️🤍",
   "docs.button": "Lihat Dokumentasi",
-  "footer.message": "Dibuat dengan ❤️ menggunakan Vue3 Tiny Translation",
-  "attribution": "Dibuat oleh <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>"
-} 
+  "footer.message": "Dibuat dengan ❤️ oleh <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>"
+}

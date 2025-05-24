@@ -18,6 +18,5 @@
   "demo.result": "النتيجة",
   "demo.api_result": "مرحبا من واجهة البرمجة! 💚🤍🖤❤️",
   "docs.button": "عرض الوثائق",
-  "footer.message": "تم البناء بـ ❤️ باستخدام Vue3 Tiny Translation",
-  "attribution": "صُنع بواسطة <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>"
-} 
+  "footer.message": "صُنع بـ ❤️ من قبل <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>"
+}

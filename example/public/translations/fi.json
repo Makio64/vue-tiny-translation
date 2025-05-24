@@ -18,6 +18,5 @@
   "demo.result": "Tulos",
   "demo.api_result": "Terveisiä APIsta! 🤍💙",
   "docs.button": "Näytä Dokumentit",
-  "footer.message": "Rakennettu ❤️:lla käyttäen Vue3 Tiny Translation",
-  "attribution": "Luotu käyttäjän <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a> toimesta"
-} 
+  "footer.message": "Rakennettu ❤️:lla, tekijä <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>"
+}

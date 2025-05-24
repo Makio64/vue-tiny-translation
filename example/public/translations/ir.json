@@ -18,6 +18,5 @@
   "demo.result": "نتیجه",
   "demo.api_result": "سلام از API! 💚🤍❤️",
   "docs.button": "مشاهده مستندات",
-  "footer.message": "با ❤️ ساخته شده با استفاده از Vue3 Tiny Translation",
-  "attribution": "ساخته شده توسط <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>"
-} 
+  "footer.message": "با ❤️ ساخته شده توسط <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>"
+}

@@ -17,6 +17,5 @@
   "demo.button": "Zavolat translate() API",
   "demo.result": "Výsledek",
   "demo.api_result": "Ahoj z API! 🤍❤️💙",
-  "footer.message": "Postaveno s ❤️ pomocí Vue3 Tiny Translation",
-  "attribution": "Vytvořeno <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>"
-} 
+  "footer.message": "Vytvořeno s ❤️ od <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>"
+}

@@ -18,6 +18,5 @@
   "demo.result": "結果",
   "demo.api_result": "APIからこんにちは！❤️🤍",
   "docs.button": "ドキュメント表示",
-  "footer.message": "Vue3 Tiny Translationで❤️を込めて構築",
-  "attribution": "<a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a> によって作成"
-} 
+  "footer.message": "<a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>が❤️を込めて制作"
+}

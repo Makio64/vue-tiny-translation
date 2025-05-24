@@ -18,6 +18,5 @@
   "demo.result": "परिणाम",
   "demo.api_result": "API से नमस्ते! 🧡🤍💚",
   "docs.button": "दस्तावेज़ देखें",
-  "footer.message": "Vue3 Tiny Translation का उपयोग करके ❤️ के साथ बनाया गया",
-  "attribution": "<a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a> द्वारा निर्मित"
-} 
+  "footer.message": "<a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a> द्वारा ❤️ के साथ बनाया गया"
+}

@@ -18,6 +18,5 @@
   "demo.result": "結果",
   "demo.api_result": "來自API嘅問候！❤️💛",
   "docs.button": "查看文檔",
-  "footer.message": "使用Vue3 Tiny Translation製作 ❤️",
-  "attribution": "由 <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a> 製作"
-} 
+  "footer.message": "由 <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a> 用 ❤️ 製作"
+}

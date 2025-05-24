@@ -18,6 +18,5 @@
   "demo.result": "תוצאה",
   "demo.api_result": "שלום מה-API! 🤍💙",
   "docs.button": "הצג תיעוד",
-  "footer.message": "נבנה באהבה ❤️ באמצעות Vue3 Tiny Translation",
-  "attribution": "נוצר על ידי <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>"
-} 
+  "footer.message": "נבנה באהבה ❤️ על ידי <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>"
+}

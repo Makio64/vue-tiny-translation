@@ -18,6 +18,5 @@
   "demo.result": "Kết quả",
   "demo.api_result": "Xin chào từ API! ❤️💛",
   "docs.button": "Xem Tài liệu",
-  "footer.message": "Được xây dựng với ❤️ sử dụng Vue3 Tiny Translation",
-  "attribution": "Được tạo bởi <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>"
-} 
+  "footer.message": "Được xây dựng với ❤️ bởi <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>"
+}
