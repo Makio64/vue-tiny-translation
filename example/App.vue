@@ -99,9 +99,6 @@
 
 <script>
 import { translate, loadTranslations } from 'vue3-tiny-translation'
-import * as THREE from 'three'
-import { CSS3DRenderer, CSS3DObject } from 'three/addons/renderers/CSS3DRenderer.js'
-import { OrbitControls } from './OrbitControls.js'
 
 export default {
   name: 'App',
@@ -109,12 +106,8 @@ export default {
     return {
       currentLang: 'en',
       programmaticResult: null,
-      scene: null,
-      camera: null,
-      renderer: null,
-      controls: null,
-      languageObjects: [],
-      featureObjects: [],
+      threeScene: null, // Will hold the 3D scene instance
+      isLoading: true,
       languages: [
         { code: 'fr', name: 'Français', flag: '🇫🇷' },
         { code: 'es', name: 'Español', flag: '🇪🇸' },
@@ -149,8 +142,7 @@ export default {
         { code: 'au', name: 'Australian English', flag: '🇦🇺' },
         { code: 'il', name: 'עברית', flag: '🇮🇱' },
         { code: 'ir', name: 'فارسی', flag: '🇮🇷' }
-      ],
-      isLoading: true
+      ]
     }
   },
   async mounted() {
@@ -162,19 +154,18 @@ export default {
     this.currentLang = language
     await this.loadLanguage(language)
     
-    // Initialize Three.js scene after translations are loaded
-    this.$nextTick(() => {
-      this.initThree()
-      this.createFloatingElements()
-      this.animate()
+    // Load and initialize 3D scene after translations are ready
+    this.$nextTick(async () => {
+      await this.init3DScene()
     })
   },
   
   beforeUnmount() {
-    if (this.renderer) {
-      this.renderer.dispose()
+    if (this.threeScene) {
+      this.threeScene.destroy()
     }
   },
+  
   methods: {
     async loadLanguage(language) {
       try {
@@ -190,103 +181,32 @@ export default {
         this.isLoading = false
       }
     },
+    
     async changeLanguage(langCode) {
       this.currentLang = langCode
       this.programmaticResult = null // Clear demo result when changing language
       await this.loadLanguage(langCode)
     },
+    
     translateProgrammatically() {
       this.programmaticResult = translate('demo.api_result', 'API call result!')
     },
     
-    initThree() {
-      // Scene
-      this.scene = new THREE.Scene()
-      
-      // Camera
-      this.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000)
-      this.camera.position.set(0, 0, 15)
-      
-      // CSS Renderer
-      this.renderer = new CSS3DRenderer()
-      this.renderer.setSize(window.innerWidth, window.innerHeight)
-      this.renderer.domElement.style.position = 'absolute'
-      this.renderer.domElement.style.inset = '0'
-      this.renderer.domElement.style.zIndex = '1'
-      this.$refs.threeContainer.appendChild(this.renderer.domElement)
-      
-      // Orbital Controls - Rotation only
-      this.controls = new OrbitControls(this.camera, this.renderer.domElement)
-      this.controls.enableDamping = true
-      this.controls.dampingFactor = 0.05
-      this.controls.enableZoom = false
-      this.controls.enablePan = false
-      this.controls.enableRotate = true
-      
-      if (this.isMobile()) {
-        this.controls.enabled = false
-      } else {
-        this.controls.minPolarAngle = Math.PI * 0.4  
-        this.controls.maxPolarAngle = Math.PI * 0.6
+    async init3DScene() {
+      try {
+        // Dynamically import the 3D scene module
+        const { ThreeScene } = await import('./threeScene.js')
+        
+        // Initialize the 3D scene with the container and languages
+        if (this.$refs.threeContainer) {
+          this.threeScene = new ThreeScene(this.$refs.threeContainer, this.languages)
+          this.threeScene.init()
+          console.log('✓ 3D Scene loaded and initialized')
+        }
+      } catch (error) {
+        console.warn('⚠ Could not load 3D scene:', error)
+        // App continues to work without 3D functionality
       }
-      
-      // Handle resize
-      window.addEventListener('resize', this.onWindowResize)
-    },
-    
-    isMobile() {
-      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
-             ('ontouchstart' in window) || 
-             (window.innerWidth <= 768)
-    },
-    
-    createFloatingElements() {
-      // Create floating flags
-      this.languages.forEach((lang, index) => {
-        const element = document.createElement('div')
-        element.className = 'floating-flag'
-        element.textContent = lang.flag
-        element.style.fontSize = '32px'
-        element.style.pointerEvents = 'none'
-        
-        const object = new CSS3DObject(element)
-        
-        // Random position
-        const radius = 350 + Math.random()*80
-        const angle = (index / this.languages.length) * Math.PI * 2
-        const y = (Math.random() - 0.5) * 400 // Random Y between -5 and 5
-        
-        object.position.x = Math.cos(angle) * radius
-        object.position.z = Math.sin(angle) * radius
-        object.position.y = y
-        
-        // Look at center
-        object.lookAt(0, y, 0)
-        
-        this.scene.add(object)
-        this.languageObjects.push({ object, angle, radius, speed: 0.01 + Math.random() * 0.01 })
-      })
-    },
-    
-    animate() {
-      requestAnimationFrame(this.animate)
-      
-      // Animate floating objects
-      this.languageObjects.forEach(item => {
-        item.angle += item.speed * 0.05
-        item.object.position.x = Math.cos(item.angle) * item.radius
-        item.object.position.z = Math.sin(item.angle) * item.radius
-        item.object.lookAt(0, 0, 0)
-      })
-      
-      this.controls.update()
-      this.renderer.render(this.scene, this.camera)
-    },
-    
-    onWindowResize() {
-      this.camera.aspect = window.innerWidth / window.innerHeight
-      this.camera.updateProjectionMatrix()
-      this.renderer.setSize(window.innerWidth, window.innerHeight)
     }
   }
 }
