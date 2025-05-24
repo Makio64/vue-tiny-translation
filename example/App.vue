@@ -1,88 +1,99 @@
 <template>
   <div id="app">
-    <!-- Three.js Scene Container -->
-    <div ref="threeContainer" class="three-scene"></div>
-    
-    <div class="app-container">
-      <!-- GitHub Link -->
-      <a href="https://github.com/makio64/vue3-tiny-translation" target="_blank" rel="noopener noreferrer" class="github-link">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.530.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-        </svg>
-      </a>
-      
-      <header class="hero">
-        <h1 class="hero-title">{{ $t('hero.title') }}</h1>
-        <p class="hero-subtitle">{{ $t('hero.subtitle') }}</p>
-        
-        <div ref="languageFlags" class="language-flags">
-          <button 
-            v-for="lang in languages" 
-            :key="lang.code"
-            @click="changeLanguage(lang.code)"
-            :class="['flag-btn', { active: currentLang === lang.code }]"
-            :title="lang.name"
-            :data-flag="lang.flag"
-          >
-            {{ lang.flag }}
-          </button>
-        </div>
-      </header>
-
-      <main class="features">
-        <div ref="featureGrid" class="feature-grid">
-          <div class="feature-card">
-            <div class="feature-icon">🚀</div>
-            <h3>{{ $t('features.tiny.title') }}</h3>
-            <p>{{ $t('features.tiny.desc') }}</p>
-          </div>
-          
-          <div class="feature-card" >
-            <div class="feature-icon">⚡</div>
-            <h3>{{ $t('features.reactive.title') }}</h3>
-            <p>{{ $t('features.reactive.desc') }}</p>
-          </div>
-          
-          <div class="feature-card" >
-            <div class="feature-icon">🔧</div>
-            <h3>{{ $t('features.simple.title') }}</h3>
-            <p>{{ $t('features.simple.desc') }}</p>
-            <a href="https://github.com/makio64/vue3-tiny-translation#readme" target="_blank" rel="noopener noreferrer" class="docs-btn">
-              📖 {{ $t('docs.button') }}
-            </a>
-          </div>
-          
-          <div class="feature-card" >
-            <div class="feature-icon">🌐</div>
-            <h3>{{ $t('features.dynamic.title') }}</h3>
-            <p>{{ $t('features.dynamic.desc') }}</p>
-          </div>
-          
-          <div class="feature-card" >
-            <div class="feature-icon">📦</div>
-            <h3>{{ $t('features.typescript.title') }}</h3>
-            <p>{{ $t('features.typescript.desc') }}</p>
-          </div>
-          
-          <div class="feature-card demo-card">
-            <div class="feature-icon">🎮</div>
-            <h3>{{ $t('demo.title') }}</h3>
-            <p>{{ $t('demo.desc') }}</p>
-            <button @click="translateProgrammatically" class="demo-btn">
-              {{ $t('demo.button') }}
-            </button>
-            <p v-if="programmaticResult" class="demo-result">
-              {{ $t('demo.result') }}: <code>{{ programmaticResult }}</code>
-            </p>
-          </div>
-        </div>
-      </main>
-
-      <footer class="footer">
-        <p>{{ $t('footer.message') }}</p>
-        <p class="attribution" v-html="$t('attribution')"></p>
-      </footer>
+    <!-- Loading Screen -->
+    <div v-if="isLoading" class="loading-screen">
+      <div class="loading-content">
+        <div class="loading-spinner"></div>
+        <p>Loading translations...</p>
+      </div>
     </div>
+    
+    <!-- Main Content - Only show when translations are loaded -->
+    <template v-else>
+      <!-- Three.js Scene Container -->
+      <div ref="threeContainer" class="three-scene"></div>
+      
+      <div class="app-container">
+        <!-- GitHub Link -->
+        <a href="https://github.com/makio64/vue3-tiny-translation" target="_blank" rel="noopener noreferrer" class="github-link">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.530.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+        </a>
+        
+        <header class="hero">
+          <h1 class="hero-title">{{ $t('hero.title') }}</h1>
+          <p class="hero-subtitle">{{ $t('hero.subtitle') }}</p>
+          
+          <div ref="languageFlags" class="language-flags">
+            <button 
+              v-for="lang in languages" 
+              :key="lang.code"
+              @click="changeLanguage(lang.code)"
+              :class="['flag-btn', { active: currentLang === lang.code }]"
+              :title="lang.name"
+              :data-flag="lang.flag"
+            >
+              {{ lang.flag }}
+            </button>
+          </div>
+        </header>
+
+        <main class="features">
+          <div ref="featureGrid" class="feature-grid">
+            <div class="feature-card">
+              <div class="feature-icon">🚀</div>
+              <h3>{{ $t('features.tiny.title') }}</h3>
+              <p>{{ $t('features.tiny.desc') }}</p>
+            </div>
+            
+            <div class="feature-card" >
+              <div class="feature-icon">⚡</div>
+              <h3>{{ $t('features.reactive.title') }}</h3>
+              <p>{{ $t('features.reactive.desc') }}</p>
+            </div>
+            
+            <div class="feature-card" >
+              <div class="feature-icon">🔧</div>
+              <h3>{{ $t('features.simple.title') }}</h3>
+              <p>{{ $t('features.simple.desc') }}</p>
+              <a href="https://github.com/makio64/vue3-tiny-translation#readme" target="_blank" rel="noopener noreferrer" class="docs-btn">
+                📖 {{ $t('docs.button') }}
+              </a>
+            </div>
+            
+            <div class="feature-card" >
+              <div class="feature-icon">🌐</div>
+              <h3>{{ $t('features.dynamic.title') }}</h3>
+              <p>{{ $t('features.dynamic.desc') }}</p>
+            </div>
+            
+            <div class="feature-card" >
+              <div class="feature-icon">📦</div>
+              <h3>{{ $t('features.typescript.title') }}</h3>
+              <p>{{ $t('features.typescript.desc') }}</p>
+            </div>
+            
+            <div class="feature-card demo-card">
+              <div class="feature-icon">🎮</div>
+              <h3>{{ $t('demo.title') }}</h3>
+              <p>{{ $t('demo.desc') }}</p>
+              <button @click="translateProgrammatically" class="demo-btn">
+                {{ $t('demo.button') }}
+              </button>
+              <p v-if="programmaticResult" class="demo-result">
+                {{ $t('demo.result') }}: <code>{{ programmaticResult }}</code>
+              </p>
+            </div>
+          </div>
+        </main>
+
+        <footer class="footer">
+          <p>{{ $t('footer.message') }}</p>
+          <p class="attribution" v-html="$t('attribution')"></p>
+        </footer>
+      </div>
+    </template>
   </div>
 </template>
 
@@ -138,7 +149,8 @@ export default {
         { code: 'au', name: 'Australian English', flag: '🇦🇺' },
         { code: 'il', name: 'עברית', flag: '🇮🇱' },
         { code: 'ir', name: 'فارسی', flag: '🇮🇷' }
-      ]
+      ],
+      isLoading: true
     }
   },
   async mounted() {
@@ -150,10 +162,12 @@ export default {
     this.currentLang = language
     await this.loadLanguage(language)
     
-    // Initialize Three.js scene
-    this.initThree()
-    this.createFloatingElements()
-    this.animate()
+    // Initialize Three.js scene after translations are loaded
+    this.$nextTick(() => {
+      this.initThree()
+      this.createFloatingElements()
+      this.animate()
+    })
   },
   
   beforeUnmount() {
@@ -172,6 +186,8 @@ export default {
           await loadTranslations('/translations/en.json')
           this.currentLang = 'en'
         }
+      } finally {
+        this.isLoading = false
       }
     },
     async changeLanguage(langCode) {
@@ -296,6 +312,42 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  color: var(--text-primary);
+}
+
+.loading-content {
+  text-align: center;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Cascadia Code', monospace;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top: 3px solid var(--text-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 16px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-content p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
 }
 
 #app {
