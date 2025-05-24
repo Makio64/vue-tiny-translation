@@ -2,6 +2,8 @@
 
 A minimalist reactive translation plugin for Vue 3. Super lightweight (**0.32KB gzipped**), simple, and efficient internationalization solution.
 
+🌐 **[Live Demo](https://vue3-tiny-translation.netlify.app/)** - Try it now !
+
 ## Features
 
 - 🚀 **Tiny**: Minimal footprint, maximum performance
@@ -89,9 +91,11 @@ public/translations/
 - **`loadTranslations(path)`** - Load translations from any source
 
 
-## Testing Locally
+## Demo & Testing
 
-Try the example to see it in action:
+🌐 **Online Demo**: Visit [vue3-tiny-translation.netlify.app](https://vue3-tiny-translation.netlify.app/) to try the plugin with 33+ languages!
+
+**Local Testing**: Clone and run the example locally:
 
 ```bash
 cd example
@@ -99,7 +103,7 @@ npm install
 npm run dev
 ```
 
-Open `http://localhost:3000` and see the plugin working with automatic language detection!
+Open `http://localhost:5173` and see the plugin working with automatic language detection!
 
 ## License
 
