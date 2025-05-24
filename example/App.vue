@@ -497,6 +497,19 @@ export default {
   font-size: 0.8rem;
 }
 
+.footer a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: var(--transition);
+  pointer-events: auto;
+}
+
+.footer a:hover {
+  color: #ccc;
+  border-bottom-color: var(--text-secondary);
+}
+
 .attribution {
   margin-top: 8px;
   font-size: 0.75rem;
