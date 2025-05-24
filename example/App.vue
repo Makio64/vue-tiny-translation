@@ -207,15 +207,22 @@ export default {
       this.controls.enablePan = false
       this.controls.enableRotate = true
       
-      // Limit vertical rotation range
-      this.controls.minPolarAngle = Math.PI * 0.4  
-      this.controls.maxPolarAngle = Math.PI * 0.6
+      if (this.isMobile()) {
+        this.controls.enabled = false
+      } else {
+        this.controls.minPolarAngle = Math.PI * 0.4  
+        this.controls.maxPolarAngle = Math.PI * 0.6
+      }
       
       // Handle resize
       window.addEventListener('resize', this.onWindowResize)
     },
     
-
+    isMobile() {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+             ('ontouchstart' in window) || 
+             (window.innerWidth <= 768)
+    },
     
     createFloatingElements() {
       // Create floating flags
@@ -231,14 +238,14 @@ export default {
         // Random position
         const radius = 350 + Math.random()*80
         const angle = (index / this.languages.length) * Math.PI * 2
-        const y = (Math.random() - 0.5) * 300 // Random Y between -5 and 5
+        const y = (Math.random() - 0.5) * 400 // Random Y between -5 and 5
         
         object.position.x = Math.cos(angle) * radius
         object.position.z = Math.sin(angle) * radius
         object.position.y = y
         
         // Look at center
-        object.lookAt(0, 0, 0)
+        object.lookAt(0, y, 0)
         
         this.scene.add(object)
         this.languageObjects.push({ object, angle, radius, speed: 0.01 + Math.random() * 0.01 })
@@ -347,6 +354,7 @@ export default {
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
   border: 1px solid var(--border-light);
+  pointer-events: auto;
 }
 
 .github-link:hover {
@@ -364,6 +372,7 @@ export default {
 
 .hero-title {
   font-size: 2.2rem;
+  line-height: 1.2;
   font-weight: 600;
   margin-bottom: 16px;
   color: var(--text-primary);
@@ -374,6 +383,7 @@ export default {
   color: var(--text-muted);
   margin: 0 auto 32px;
   max-width: 500px;
+  min-height: 60px;
   line-height: 1.5;
 }
 
@@ -387,7 +397,7 @@ export default {
 }
 
 .flag-btn {
-  background: rgba(60, 60, 60, 0.3);
+  background: rgba(0, 0, 0, 0.75);
   border: 1px solid var(--border-light);
   border-radius: var(--border-radius);
   width: 44px;
@@ -431,7 +441,7 @@ export default {
 
 .feature-card:hover {
   background: var(--bg-darker);
-  border-color: rgba(80, 80, 80, 0.7);
+  border-color: rgba(0, 0, 0, 0.7);
 }
 
 .feature-icon {
