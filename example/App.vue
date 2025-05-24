@@ -4,16 +4,16 @@
     <div v-if="isLoading" class="loading-screen">
       <div class="loading-content">
         <div class="loading-spinner"></div>
-        <p>Loading translations...</p>
+        <p>Vue-Tiny-Translation</p>
       </div>
     </div>
     
-    <!-- Main Content - Only show when translations are loaded -->
     <template v-else>
       <!-- Three.js Scene Container -->
       <div ref="threeContainer" class="three-scene"></div>
       
       <div class="app-container">
+
         <!-- GitHub Link -->
         <a href="https://github.com/makio64/vue3-tiny-translation" title="See the github repository" target="_blank" rel="noopener noreferrer" class="github-link">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -22,15 +22,16 @@
         </a>
         
         <header class="hero">
-          <h1 class="hero-title">{{ $t('hero.title') }}</h1>
-          <p class="hero-subtitle">{{ $t('hero.subtitle') }}</p>
+          <h1 class="title">{{ $t('hero.title') }}</h1>
+          <p class="subtitle">{{ $t('hero.subtitle') }}</p>
           
-          <div ref="languageFlags" class="language-flags">
+          <div ref="flags" class="flags">
             <button 
               v-for="lang in languages" 
               :key="lang.code"
               @click="changeLanguage(lang.code)"
-              :class="['flag-btn', { active: currentLang === lang.code }]"
+              class="flag-btn"
+              :class="{ active: currentLang === lang.code }"
               :title="lang.name"
               :data-flag="lang.flag"
             >
@@ -193,7 +194,8 @@ export default {
     
     async init3DScene() {
       try {
-        // Dynamically import the 3D scene module
+
+        // Dynamically import the 3D scene module - Auto chunks
         const { ThreeScene } = await import('./threeScene.js')
         
         // Initialize the 3D scene with the container and languages
@@ -204,7 +206,6 @@ export default {
         }
       } catch (error) {
         console.warn('⚠ Could not load 3D scene:', error)
-        // App continues to work without 3D functionality
       }
     }
   }
@@ -341,7 +342,7 @@ export default {
   color: white;
 }
 
-.hero-title {
+.title {
   font-size: 2.2rem;
   line-height: 1.2;
   font-weight: 600;
@@ -349,7 +350,7 @@ export default {
   color: var(--text-primary);
 }
 
-.hero-subtitle {
+.subtitle {
   font-size: 1rem;
   color: var(--text-muted);
   margin: 0 auto 32px;
@@ -358,7 +359,7 @@ export default {
   line-height: 1.5;
 }
 
-.language-flags {
+.flags {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -510,28 +511,11 @@ export default {
   border-bottom-color: var(--text-secondary);
 }
 
-.attribution {
-  margin-top: 8px;
-  font-size: 0.75rem;
-}
-
-.attribution a {
-  color: var(--text-muted);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: var(--transition);
-}
-
-.attribution a:hover {
-  color: #ccc;
-  border-bottom-color: var(--text-muted);
-}
-
 @media (max-width: 768px) {
-  .hero-title { font-size: 2rem; }
-  .hero-subtitle { font-size: 0.9rem; }
+  .title { font-size: 2rem; }
+  .subtitle { font-size: 0.9rem; }
   .feature-grid { grid-template-columns: 1fr; gap: 12px; }
-  .language-flags { gap: 6px; }
+  .flags { gap: 6px; }
   .flag-btn { width: 36px; height: 28px; font-size: 14px; }
 }
 </style> 

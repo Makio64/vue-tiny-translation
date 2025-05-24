@@ -10,7 +10,7 @@ export class ThreeScene {
     this.camera = null
     this.renderer = null
     this.controls = null
-    this.languageObjects = []
+    this.flags = []
     this.animationId = null
     this.isDestroyed = false
   }
@@ -38,6 +38,8 @@ export class ThreeScene {
     this.renderer.domElement.style.position = 'absolute'
     this.renderer.domElement.style.inset = '0'
     this.renderer.domElement.style.zIndex = '1'
+    this.renderer.domElement.style.pointerEvents = this.isMobile() ? 'none' : 'auto'
+
     this.container.appendChild(this.renderer.domElement)
     
     // Orbital Controls - Rotation only
@@ -53,9 +55,7 @@ export class ThreeScene {
   }
 
   isMobile() {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
-           ('ontouchstart' in window) || 
-           (window.innerWidth <= 768)
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || (window.innerWidth <= 768)
   }
 
   createFloatingElements() {
@@ -77,12 +77,10 @@ export class ThreeScene {
       object.position.x = Math.cos(angle) * radius
       object.position.z = Math.sin(angle) * radius
       object.position.y = y
-      
-      // Look at center
       object.lookAt(0, y, 0)
       
       this.scene.add(object)
-      this.languageObjects.push({ object, angle, radius, speed: 0.01 + Math.random() * 0.01 })
+      this.flags.push({ object, angle, radius, speed: 0.01 + Math.random() * 0.01 })
     })
   }
 
@@ -92,7 +90,7 @@ export class ThreeScene {
     this.animationId = requestAnimationFrame(this.animate)
     
     // Animate floating objects
-    this.languageObjects.forEach(item => {
+    this.flags.forEach(item => {
       item.angle += item.speed * 0.05
       item.object.position.x = Math.cos(item.angle) * item.radius
       item.object.position.z = Math.sin(item.angle) * item.radius
@@ -146,6 +144,6 @@ export class ThreeScene {
     this.camera = null
     this.renderer = null
     this.controls = null
-    this.languageObjects = []
+    this.flags = []
   }
 } 
