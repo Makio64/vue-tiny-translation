@@ -1,6 +1,6 @@
 {
   "loading": "正在載入翻譯...",
-  "hero.title": "Vue3 微型翻譯",
+  "hero.title": "Vue3 Tiny Translation",
   "hero.subtitle": "Vue 3 的極簡響應式翻譯插件。超輕量且簡單。✨",
   "features.tiny.title": "微小",
   "features.tiny.desc": "佔用空間極小，效能極大",
