@@ -29,7 +29,7 @@
             <button 
               v-for="lang in languages" 
               :key="lang.code"
-              @click="changeLanguage(lang.code)"
+              @click="changeLanguage(lang.code, $event)"
               class="flag-btn"
               :class="{ active: currentLang === lang.code }"
               :title="lang.name"
@@ -99,6 +99,7 @@
 
 <script>
 import { translate, loadTranslations } from 'vue-tiny-translation'
+import { animate } from 'animejs'
 
 export default {
   name: 'App',
@@ -160,12 +161,6 @@ export default {
     })
   },
   
-  beforeUnmount() {
-    if (this.threeScene) {
-      this.threeScene.destroy()
-    }
-  },
-  
   methods: {
     async loadLanguage(language) {
       try {
@@ -182,7 +177,20 @@ export default {
       }
     },
     
-    async changeLanguage(langCode) {
+    async changeLanguage(langCode, event) {
+      // Animate the clicked flag button
+      if (event && event.target) {
+        animate(event.target, {
+          rotate: [0,360],
+          duration: 300,
+          ease: 'inOutQuad',
+        })
+      }
+
+      if(this.threeScene){
+        this.threeScene.changeLanguage(langCode)
+      }
+      
       this.currentLang = langCode
       this.programmaticResult = null // Clear demo result when changing language
       await this.loadLanguage(langCode)

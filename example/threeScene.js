@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { CSS3DRenderer, CSS3DObject } from 'three/addons/renderers/CSS3DRenderer.js'
 import { OrbitControls } from './OrbitControls.js'
+import { animate } from 'animejs'
 
 export class ThreeScene {
   constructor(container, languages) {
@@ -12,11 +13,10 @@ export class ThreeScene {
     this.controls = null
     this.flags = []
     this.animationId = null
-    this.isDestroyed = false
+    this.rotation = 0
   }
 
   init() {
-    if (this.isDestroyed) return
     
     this.initThree()
     this.createFloatingElements()
@@ -92,8 +92,8 @@ export class ThreeScene {
     // Animate floating objects
     this.flags.forEach(item => {
       item.angle += item.speed * 0.05
-      item.object.position.x = Math.cos(item.angle) * item.radius
-      item.object.position.z = Math.sin(item.angle) * item.radius
+      item.object.position.x = Math.cos(item.angle + this.rotation) * item.radius
+      item.object.position.z = Math.sin(item.angle + this.rotation) * item.radius
       item.object.lookAt(0, item.object.position.y, 0)
     })
     
@@ -107,7 +107,6 @@ export class ThreeScene {
 
   handleResize() {
     this.onWindowResize = () => {
-      if (this.isDestroyed) return
       
       this.camera.aspect = window.innerWidth / window.innerHeight
       this.camera.updateProjectionMatrix()
@@ -117,33 +116,13 @@ export class ThreeScene {
     window.addEventListener('resize', this.onWindowResize)
   }
 
-  destroy() {
-    this.isDestroyed = true
-    
-    if (this.animationId) {
-      cancelAnimationFrame(this.animationId)
-    }
-    
-    if (this.onWindowResize) {
-      window.removeEventListener('resize', this.onWindowResize)
-    }
-    
-    if (this.controls) {
-      this.controls.dispose()
-    }
-    
-    if (this.renderer) {
-      this.renderer.dispose()
-      if (this.renderer.domElement && this.renderer.domElement.parentNode) {
-        this.renderer.domElement.parentNode.removeChild(this.renderer.domElement)
-      }
-    }
-    
-    // Clear references
-    this.scene = null
-    this.camera = null
-    this.renderer = null
-    this.controls = null
-    this.flags = []
+
+  changeLanguage(langCode){
+    // rotation animation: 360deg
+    animate(this, {
+      rotation: "+="+Math.PI,
+      duration: 1000,
+      ease: 'inOutQuad',
+    })
   }
 } 
