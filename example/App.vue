@@ -25,6 +25,16 @@
           <h1 class="title">{{ $t('hero.title') }}</h1>
           <p class="subtitle">{{ $t('hero.subtitle') }}</p>
           
+          <!-- Floating greeting message -->
+          <div 
+            v-if="floatingGreeting.show" 
+            ref="floatingGreeting"
+            class="floating-greeting"
+            :style="{ left: floatingGreeting.x + 'px', top: floatingGreeting.y + 'px' }"
+          >
+            {{ floatingGreeting.text }}
+          </div>
+          
           <div ref="flags" class="flags">
             <button 
               v-for="lang in languages" 
@@ -99,7 +109,7 @@
 
 <script>
 import { translate, loadTranslations } from 'vue-tiny-translation'
-import { animate } from 'animejs'
+import { animate, utils } from 'animejs'
 
 export default {
   name: 'App',
@@ -109,6 +119,12 @@ export default {
       programmaticResult: null,
       threeScene: null, // Will hold the 3D scene instance
       isLoading: true,
+      floatingGreeting: {
+        show: false,
+        text: '',
+        x: 0,
+        y: 0
+      },
       languages: [
         { code: 'fr', name: 'Français', flag: '🇫🇷' },
         { code: 'es', name: 'Español', flag: '🇪🇸' },
@@ -185,6 +201,7 @@ export default {
           duration: 300,
           ease: 'inOutQuad',
         })
+        
       }
 
       if(this.threeScene){
@@ -194,6 +211,38 @@ export default {
       this.currentLang = langCode
       this.programmaticResult = null // Clear demo result when changing language
       await this.loadLanguage(langCode)
+      // Show floating greeting
+      this.showFloatingGreeting(langCode, event)
+
+    },
+    
+    showFloatingGreeting(langCode, event) {
+      const rect = event.target.getBoundingClientRect()
+      
+      // Position the greeting near the clicked button
+      this.floatingGreeting.x = rect.left + rect.width / 2 - 30 // Center horizontally
+      this.floatingGreeting.y = rect.top - 10 // Slightly above the button
+      this.floatingGreeting.text = translate('greeting') || 'Hello!'
+      this.floatingGreeting.show = true
+
+      
+      // Animate the greeting going up and fading out
+      this.$nextTick(() => {
+        
+        if (this.$refs.floatingGreeting) {
+          utils.remove(this.$refs.floatingGreeting)
+          animate(this.$refs.floatingGreeting, {
+            y: [0,-60],
+            opacity: [1,1, 0],
+            duration: 1000,
+            scale: [0.6,1],
+            ease: 'outQuad',
+            onComplete: () => {
+              this.floatingGreeting.show = false
+            }
+          })
+        }
+      })
     },
     
     translateProgrammatically() {
@@ -517,6 +566,18 @@ export default {
 .footer a:hover {
   color: #ccc;
   border-bottom-color: var(--text-secondary);
+}
+
+.floating-greeting {
+  position: fixed;
+  z-index: 1000;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
 }
 
 @media (max-width: 768px) {

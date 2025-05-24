@@ -1,5 +1,6 @@
 {
-  "loading": "Cargando traducciones...",
+  "loading": "Cargando traducciones... ¡Ole! 🇪🇸",
+  "greeting": "¡Hola!",
   "hero.title": "Vue Tiny Translation",
   "hero.subtitle": "Un plugin de traducción reactivo minimalista para Vue 3. Súper ligero y simple ✨",
   "features.tiny.title": "Minúsculo",

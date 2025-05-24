@@ -18,5 +18,6 @@
   "demo.result": "परिणाम",
   "demo.api_result": "API से नमस्ते! 🧡🤍💚",
   "docs.button": "दस्तावेज़ देखें",
-  "footer.message": "<a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a> द्वारा ❤️ के साथ बनाया गया"
+  "footer.message": "<a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a> द्वारा ❤️ के साथ बनाया गया",
+  "greeting": "नमस्ते!"
 }

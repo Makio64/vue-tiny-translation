@@ -1,5 +1,6 @@
 {
   "loading": "Loading translations...",
+  "greeting": "Hello!",
   "hero.title": "Vue Tiny Translation",
   "hero.subtitle": "A minimalist reactive translation plugin for Vue 3. Super lightweight & simple ✨",
   "features.tiny.title": "Tiny",
