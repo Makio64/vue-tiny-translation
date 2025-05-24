@@ -1,0 +1,23 @@
+{
+  "loading": "Cargando traducciones...",
+  "hero.title": "Vue3 Tiny Translation",
+  "hero.subtitle": "Un plugin de traducción reactivo minimalista para Vue 3. Súper ligero y simple ✨",
+  "features.tiny.title": "Minúsculo",
+  "features.tiny.desc": "Huella mínima (0,32KB gzipeado), rendimiento máximo",
+  "features.reactive.title": "Reactivo",
+  "features.reactive.desc": "Actualiza automáticamente los componentes cuando cambian las traducciones, ¡sin recarga!",
+  "features.simple.title": "API Simple",
+  "features.simple.desc": "Súper fácil de usar con métodos intuitivos",
+  "features.dynamic.title": "Carga Dinámica",
+  "features.dynamic.desc": "Carga traducciones de forma asíncrona desde cualquier lugar",
+  "features.typescript.title": "Soporte TypeScript",
+  "features.typescript.desc": "Definiciones completas de TypeScript incluidas",
+  "demo.title": "Demo en Vivo",
+  "demo.desc": "¡Prueba la API programática aquí mismo!",
+  "demo.button": "Llamar API translate()",
+  "demo.result": "Resultado",
+  "demo.api_result": "¡Hola desde la API! ❤️💛",
+  "docs.button": "Ver Documentación",
+  "footer.message": "Construido con ❤️ usando Vue3 Tiny Translation",
+  "attribution": "Creado por <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>"
+} 

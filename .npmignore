@@ -1,0 +1,52 @@
+# Source files (only include built dist)
+src/
+rollup.config.js
+
+# Development dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Test files
+test/
+tests/
+__tests__/
+*.test.js
+*.spec.js
+
+# Coverage
+coverage/
+
+# Build tools
+.babelrc
+.eslintrc*
+jest.config.*
+webpack.config.*
+rollup.config.*
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# CI
+.travis.yml
+.github/
+.circleci/
+
+# Documentation source
+docs/
+
+# Example/demo files
+examples/
+demo/ 

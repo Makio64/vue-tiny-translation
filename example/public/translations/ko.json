@@ -1,0 +1,23 @@
+{
+  "loading": "번역을 로딩 중...",
+  "hero.title": "Vue3 Tiny Translation",
+  "hero.subtitle": "Vue 3용 미니멀 반응형 번역 플러그인. 초경량이며 간단함 ✨",
+  "features.tiny.title": "초소형",
+  "features.tiny.desc": "최소 풋프린트, 최대 성능",
+  "features.reactive.title": "반응형",
+  "features.reactive.desc": "번역이 변경될 때 컴포넌트를 자동 업데이트, 페이지 새로고침 없음!",
+  "features.simple.title": "간단한 API",
+  "features.simple.desc": "직관적인 메서드로 매우 쉽게 사용",
+  "features.dynamic.title": "동적 로딩",
+  "features.dynamic.desc": "어디서든 비동기적으로 번역 로드",
+  "features.typescript.title": "TypeScript 지원",
+  "features.typescript.desc": "완전한 TypeScript 정의 포함",
+  "demo.title": "라이브 데모",
+  "demo.desc": "여기서 프로그래밍 API를 시도해보세요!",
+  "demo.button": "translate() API 호출",
+  "demo.result": "결과",
+  "demo.api_result": "API에서 안녕하세요! ❤️🤍💙",
+  "docs.button": "문서 보기",
+  "footer.message": "Vue3 Tiny Translation으로 ❤️를 담아 제작",
+  "attribution": "<a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>에 의해 제작됨"
+} 

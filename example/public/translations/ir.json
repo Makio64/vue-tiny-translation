@@ -1,0 +1,23 @@
+{
+  "loading": "در حال بارگیری ترجمه‌ها...",
+  "hero.title": "Vue3 Tiny Translation",
+  "hero.subtitle": "یک افزونه ترجمه واکنشی مینیمالیستی برای Vue 3. فوق‌العاده سبک و ساده.",
+  "features.tiny.title": "کوچک",
+  "features.tiny.desc": "حداقل فضای اشغالی، حداکثر عملکرد",
+  "features.reactive.title": "واکنشی",
+  "features.reactive.desc": "کامپوننت‌ها را به طور خودکار هنگام تغییر ترجمه‌ها به‌روزرسانی می‌کند، بدون بارگیری مجدد!",
+  "features.simple.title": "API ساده",
+  "features.simple.desc": "استفاده فوق‌العاده آسان با روش‌های شهودی",
+  "features.dynamic.title": "بارگیری پویا",
+  "features.dynamic.desc": "ترجمه‌ها را به صورت ناهمزمان از هر جایی بارگیری کنید",
+  "features.typescript.title": "پشتیبانی TypeScript",
+  "features.typescript.desc": "تعاریف کامل TypeScript شامل شده است",
+  "demo.title": "نمایش زنده",
+  "demo.desc": "API برنامه‌نویسی را اینجا امتحان کنید!",
+  "demo.button": "فراخوانی translate() API",
+  "demo.result": "نتیجه",
+  "demo.api_result": "سلام از API! 💚🤍❤️",
+  "docs.button": "مشاهده مستندات",
+  "footer.message": "با ❤️ ساخته شده با استفاده از Vue3 Tiny Translation",
+  "attribution": "ساخته شده توسط <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>"
+} 

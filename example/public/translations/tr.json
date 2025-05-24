@@ -1,0 +1,23 @@
+{
+  "loading": "Çeviriler yükleniyor...",
+  "hero.title": "Vue3 Tiny Translation",
+  "hero.subtitle": "Vue 3 için minimalist reaktif çeviri eklentisi. Süper hafif ve basit ✨",
+  "features.tiny.title": "Küçük",
+  "features.tiny.desc": "Minimal ayak izi, maksimum performans",
+  "features.reactive.title": "Reaktif",
+  "features.reactive.desc": "Çeviriler değiştiğinde bileşenleri otomatik günceller, yeniden yükleme yok! Muhteşem!",
+  "features.simple.title": "Basit API",
+  "features.simple.desc": "Sezgisel yöntemlerle kullanımı çok kolay",
+  "features.dynamic.title": "Dinamik Yükleme",
+  "features.dynamic.desc": "Çevirileri her yerden asenkron olarak yükler",
+  "features.typescript.title": "TypeScript Desteği",
+  "features.typescript.desc": "Eksiksiz TypeScript tanımları dahil",
+  "demo.title": "Canlı Demo",
+  "demo.desc": "Programatik API'yi burada deneyin! Merhaba! 👋",
+  "demo.button": "translate() API'yi çağır",
+  "demo.result": "Sonuç",
+  "demo.api_result": "API'den merhaba! ❤️🤍",
+  "docs.button": "Belgeleri Görüntüle",
+  "footer.message": "Vue3 Tiny Translation kullanarak ❤️ ile yapıldı",
+  "attribution": "<a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a> tarafından oluşturuldu"
+} 

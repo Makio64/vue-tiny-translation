@@ -1,0 +1,23 @@
+{
+  "loading": "جاري تحميل الترجمات...",
+  "hero.title": "Vue3 Tiny Translation",
+  "hero.subtitle": "إضافة ترجمة تفاعلية بسيطة لـ Vue 3. خفيف وبسيط.",
+  "features.tiny.title": "صغير",
+  "features.tiny.desc": "بصمة صغيرة، أداء عالي",
+  "features.reactive.title": "تفاعلي",
+  "features.reactive.desc": "يحدث المكونات تلقائياً عند تغيير الترجمات، بدون إعادة تحميل!",
+  "features.simple.title": "واجهة برمجة بسيطة",
+  "features.simple.desc": "سهل الاستخدام مع طرق بديهية",
+  "features.dynamic.title": "تحميل ديناميكي",
+  "features.dynamic.desc": "تحميل الترجمات بشكل غير متزامن من أي مكان",
+  "features.typescript.title": "دعم TypeScript",
+  "features.typescript.desc": "تعريفات TypeScript كاملة مضمنة",
+  "demo.title": "عرض مباشر",
+  "demo.desc": "جرب واجهة البرمجة هنا!",
+  "demo.button": "استدعاء translate() API",
+  "demo.result": "النتيجة",
+  "demo.api_result": "مرحبا من API! 💚🤍🖤❤️",
+  "docs.button": "د اسنادو کتل",
+  "footer.message": "تم البناء بـ ❤️ باستخدام Vue3 Tiny Translation",
+  "attribution": "صُنع بواسطة <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>"
+} 

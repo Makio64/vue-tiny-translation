@@ -1,0 +1,23 @@
+{
+  "loading": "翻訳を読み込み中...",
+  "hero.title": "Vue3 Tiny Translation",
+  "hero.subtitle": "Vue 3用のミニマリストなリアクティブ翻訳プラグイン。超軽量でシンプル ✨",
+  "features.tiny.title": "超軽量",
+  "features.tiny.desc": "最小フットプリント（0.32KB gzip圧縮）、最大パフォーマンス",
+  "features.reactive.title": "リアクティブ",
+  "features.reactive.desc": "翻訳が変更されたときにコンポーネントを自動更新、ページのリロードなし！",
+  "features.simple.title": "シンプルAPI",
+  "features.simple.desc": "直感的なメソッドで超簡単に使用",
+  "features.dynamic.title": "動的ロード",
+  "features.dynamic.desc": "どこからでも非同期で翻訳をロード",
+  "features.typescript.title": "TypeScriptサポート",
+  "features.typescript.desc": "完全なTypeScript定義が含まれています",
+  "demo.title": "ライブデモ",
+  "demo.desc": "ここでプログラマティックAPIを試してみよう！",
+  "demo.button": "translate() APIを呼び出す",
+  "demo.result": "結果",
+  "demo.api_result": "APIからこんにちは！❤️🤍",
+  "docs.button": "ドキュメント表示",
+  "footer.message": "Vue3 Tiny Translationで❤️を込めて構築",
+  "attribution": "<a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a> によって作成"
+} 

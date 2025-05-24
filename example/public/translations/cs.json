@@ -1,0 +1,23 @@
+{
+  "loading": "Načítají se překlady...",
+  "hero.title": "Vue3 Tiny Translation",
+  "hero.subtitle": "Minimalistický reaktivní překladový plugin pro Vue 3. Super lehké a jednoduché.",
+  "features.tiny.title": "Malý",
+  "features.tiny.desc": "Minimální stopa, maximální výkon",
+  "features.reactive.title": "Reaktivní",
+  "features.reactive.desc": "Automaticky aktualizuje komponenty při změně překladů, bez obnovování!",
+  "features.simple.title": "Jednoduché API",
+  "features.simple.desc": "Super snadné použití s intuitivními metodami",
+  "features.dynamic.title": "Dynamické Načítání",
+  "features.dynamic.desc": "Načítá překlady asynchronně odkudkoli",
+  "features.typescript.title": "Podpora TypeScript",
+  "features.typescript.desc": "Kompletní TypeScript definice zahrnuty",
+  "demo.title": "Live Demo",
+  "demo.desc": "Vyzkoušejte programatické API zde!",
+  "demo.button": "Zavolat translate() API",
+  "demo.result": "Výsledek",
+  "demo.api_result": "Ahoj z API! 🤍❤️💙",
+  "docs.button": "Zobrazit Dokumenty",
+  "footer.message": "Postaveno s ❤️ pomocí Vue3 Tiny Translation",
+  "attribution": "Vytvořeno <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>"
+} 

@@ -1,0 +1,50 @@
+{
+  "name": "vue3-tiny-translation",
+  "version": "1.0.0",
+  "description": "A minimalist reactive translation plugin for Vue 3. Super lightweight (0.32KB gzipped).",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "vue",
+    "vue3",
+    "i18n",
+    "translation",
+    "internationalization",
+    "reactive",
+    "plugin",
+    "tiny",
+    "minimalist"
+  ],
+  "author": "Makio64 | David Ronai",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Makio64/vue3-tiny-translation.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Makio64/vue3-tiny-translation/issues"
+  },
+  "homepage": "https://github.com/Makio64/vue3-tiny-translation#readme",
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-terser": "^0.4.4",
+    "rollup": "^4.41.1",
+    "typescript": "^5.8.3"
+  },
+  "packageManager": "pnpm@10.11.0+sha512.6540583f41cc5f628eb3d9773ecee802f4f9ef9923cc45b69890fb47991d4b092964694ec3a4f738a420c918a333062c8b925d312f42e4f0c263eb603551f977"
+}

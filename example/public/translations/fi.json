@@ -1,0 +1,23 @@
+{
+  "loading": "Ladataan käännöksiä...",
+  "hero.title": "Vue3 Tiny Translation",
+  "hero.subtitle": "Minimalistinen reaktiivinen käännöslisäosa Vue 3:lle. Erittäin kevyt ja yksinkertainen.",
+  "features.tiny.title": "Pieni",
+  "features.tiny.desc": "Minimaalinen jalanjälki, maksimaalinen suorituskyky",
+  "features.reactive.title": "Reaktiivinen",
+  "features.reactive.desc": "Päivittää komponentit automaattisesti kun käännökset muuttuvat, ei uudelleenlatausta!",
+  "features.simple.title": "Yksinkertainen API",
+  "features.simple.desc": "Erittäin helppo käyttää intuitiivisilla menetelmillä",
+  "features.dynamic.title": "Dynaaminen Lataus",
+  "features.dynamic.desc": "Lataa käännöksiä asynkronisesti mistä tahansa",
+  "features.typescript.title": "TypeScript Tuki",
+  "features.typescript.desc": "Täydelliset TypeScript määrittelyt mukana",
+  "demo.title": "Live Demo",
+  "demo.desc": "Kokeile ohjelmallista APIa täällä!",
+  "demo.button": "Kutsu translate() API",
+  "demo.result": "Tulos",
+  "demo.api_result": "Terveisiä APIsta! 🤍💙",
+  "docs.button": "Näytä Dokumentit",
+  "footer.message": "Rakennettu ❤️:lla käyttäen Vue3 Tiny Translation",
+  "attribution": "Luotu käyttäjän <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a> toimesta"
+} 

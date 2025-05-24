@@ -1,0 +1,23 @@
+{
+  "loading": "正在載入翻譯...",
+  "hero.title": "Vue3 微型翻譯",
+  "hero.subtitle": "Vue 3 的極簡響應式翻譯插件。超輕量且簡單。",
+  "features.tiny.title": "微小",
+  "features.tiny.desc": "佔用空間極小，效能極大",
+  "features.reactive.title": "響應式",
+  "features.reactive.desc": "翻譯更改時自動更新元件，無需重新載入！",
+  "features.simple.title": "簡單API",
+  "features.simple.desc": "超級容易使用的直覺方法",
+  "features.dynamic.title": "動態載入",
+  "features.dynamic.desc": "從任何地方非同步載入翻譯",
+  "features.typescript.title": "TypeScript支援",
+  "features.typescript.desc": "包含完整的TypeScript定義",
+  "demo.title": "即時演示",
+  "demo.desc": "在這裡試試程式化API！",
+  "demo.button": "呼叫translate() API",
+  "demo.result": "結果",
+  "demo.api_result": "來自API的問候！❤️🤍💙",
+  "docs.button": "查看文檔",
+  "footer.message": "使用Vue3 Tiny Translation製作 ❤️",
+  "attribution": "由 <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a> 製作"
+} 

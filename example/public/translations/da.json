@@ -1,0 +1,23 @@
+{
+  "loading": "Indlæser oversættelser...",
+  "hero.title": "Vue3 Tiny Translation",
+  "hero.subtitle": "Et minimalistisk reaktivt oversættelsesplugin til Vue 3. Superlet og simpel.",
+  "features.tiny.title": "Lille",
+  "features.tiny.desc": "Minimalt fodaftryk, maksimal ydeevne",
+  "features.reactive.title": "Reaktiv",
+  "features.reactive.desc": "Opdaterer automatisk komponenter når oversættelser ændres, ingen genindlæsning!",
+  "features.simple.title": "Simpel API",
+  "features.simple.desc": "Super nem at bruge med intuitive metoder",
+  "features.dynamic.title": "Dynamisk Indlæsning",
+  "features.dynamic.desc": "Indlæs oversættelser asynkront fra hvor som helst",
+  "features.typescript.title": "TypeScript Support",
+  "features.typescript.desc": "Komplette TypeScript definitioner inkluderet",
+  "demo.title": "Live Demo",
+  "demo.desc": "Prøv den programmatiske API her!",
+  "demo.button": "Kald translate() API",
+  "demo.result": "Resultat",
+  "demo.api_result": "Hej fra API! ❤️🤍",
+  "docs.button": "Se Dokumentation",
+  "footer.message": "Bygget med ❤️ ved hjælp af Vue3 Tiny Translation",
+  "attribution": "Lavet af <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>"
+} 

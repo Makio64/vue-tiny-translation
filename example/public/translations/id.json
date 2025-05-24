@@ -1,0 +1,23 @@
+{
+  "loading": "Memuat terjemahan...",
+  "hero.title": "Vue3 Tiny Translation",
+  "hero.subtitle": "Plugin terjemahan reaktif minimalis untuk Vue 3. Super ringan dan sederhana.",
+  "features.tiny.title": "Kecil",
+  "features.tiny.desc": "Jejak minimal, performa maksimal",
+  "features.reactive.title": "Reaktif",
+  "features.reactive.desc": "Memperbarui komponen secara otomatis saat terjemahan berubah, tanpa reload!",
+  "features.simple.title": "API Sederhana",
+  "features.simple.desc": "Sangat mudah digunakan dengan metode yang intuitif",
+  "features.dynamic.title": "Pemuatan Dinamis",
+  "features.dynamic.desc": "Memuat terjemahan secara asinkron dari mana saja",
+  "features.typescript.title": "Dukungan TypeScript",
+  "features.typescript.desc": "Definisi TypeScript lengkap disertakan",
+  "demo.title": "Demo Langsung",
+  "demo.desc": "Coba API programatis di sini!",
+  "demo.button": "Panggil API translate()",
+  "demo.result": "Hasil",
+  "demo.api_result": "Halo dari API! ❤️🤍",
+  "docs.button": "Lihat Dokumentasi",
+  "footer.message": "Dibuat dengan ❤️ menggunakan Vue3 Tiny Translation",
+  "attribution": "Dibuat oleh <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>"
+} 

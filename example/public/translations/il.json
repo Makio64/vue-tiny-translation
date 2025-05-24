@@ -1,0 +1,23 @@
+{
+  "loading": "טוען תרגומים...",
+  "hero.title": "Vue3 Tiny Translation",
+  "hero.subtitle": "תוסף תרגום מינימליסטי ריאקטיבי עבור Vue 3. סופר קל ופשוט ✨",
+  "features.tiny.title": "קטן",
+  "features.tiny.desc": "טביעת רגל מינימלית, ביצועים מקסימליים",
+  "features.reactive.title": "ריאקטיבי",
+  "features.reactive.desc": "מעדכן רכיבים אוטומטית כאשר תרגומים משתנים, ללא טעינה מחדש!",
+  "features.simple.title": "API פשוט",
+  "features.simple.desc": "קל מאוד לשימוש עם שיטות אינטואיטיביות",
+  "features.dynamic.title": "טעינה דינמית",
+  "features.dynamic.desc": "טוען תרגומים באופן אסינכרוני מכל מקום",
+  "features.typescript.title": "תמיכה ב-TypeScript",
+  "features.typescript.desc": "הגדרות TypeScript מלאות כלולות",
+  "demo.title": "הדגמה חיה",
+  "demo.desc": "נסה את ה-API הפרוגרמטי כאן!",
+  "demo.button": "קרא ל-translate() API",
+  "demo.result": "תוצאה",
+  "demo.api_result": "שלום מה-API! 🤍💙",
+  "docs.button": "הצג תיעוד",
+  "footer.message": "נבנה באהבה ❤️ באמצעות Vue3 Tiny Translation",
+  "attribution": "נוצר על ידי <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>"
+} 

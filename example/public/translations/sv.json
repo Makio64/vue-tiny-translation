@@ -1,0 +1,23 @@
+{
+  "loading": "Laddar översättningar...",
+  "hero.title": "Vue3 Tiny Translation",
+  "hero.subtitle": "Ett minimalistiskt reaktivt översättnings-plugin för Vue 3. Super lätt & enkelt.",
+  "features.tiny.title": "Liten",
+  "features.tiny.desc": "Minimal fotavtryck, maximal prestanda",
+  "features.reactive.title": "Reaktiv",
+  "features.reactive.desc": "Uppdaterar automatiskt komponenter när översättningar ändras, ingen omladdning!",
+  "features.simple.title": "Enkelt API",
+  "features.simple.desc": "Super lätt att använda med intuitiva metoder",
+  "features.dynamic.title": "Dynamisk Laddning",
+  "features.dynamic.desc": "Laddar översättningar asynkront från var som helst",
+  "features.typescript.title": "TypeScript-stöd",
+  "features.typescript.desc": "Kompletta TypeScript-definitioner inkluderade",
+  "demo.title": "Live Demo",
+  "demo.desc": "Testa det programmatiska API:et här!",
+  "demo.button": "Anropa translate() API",
+  "demo.result": "Resultat",
+  "demo.api_result": "Hej från API! 💙💛",
+  "docs.button": "Visa Dokumentation",
+  "footer.message": "Byggd med ❤️ med Vue3 Tiny Translation",
+  "attribution": "Skapad av <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>"
+} 

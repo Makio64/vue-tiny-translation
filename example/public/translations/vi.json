@@ -1,0 +1,23 @@
+{
+  "loading": "Đang tải bản dịch...",
+  "hero.title": "Vue3 Tiny Translation",
+  "hero.subtitle": "Plugin dịch thuật phản ứng tối giản cho Vue 3. Siêu nhẹ và đơn giản ✨",
+  "features.tiny.title": "Nhỏ gọn",
+  "features.tiny.desc": "Dung lượng tối thiểu, hiệu suất tối đa",
+  "features.reactive.title": "Phản ứng",
+  "features.reactive.desc": "Tự động cập nhật thành phần khi bản dịch thay đổi, không cần tải lại!",
+  "features.simple.title": "API Đơn giản",
+  "features.simple.desc": "Rất dễ sử dụng với các phương thức trực quan",
+  "features.dynamic.title": "Tải Động",
+  "features.dynamic.desc": "Tải bản dịch không đồng bộ từ bất kỳ đâu",
+  "features.typescript.title": "Hỗ trợ TypeScript",
+  "features.typescript.desc": "Định nghĩa TypeScript đầy đủ được bao gồm",
+  "demo.title": "Demo Trực tiếp",
+  "demo.desc": "Thử API lập trình ngay tại đây!",
+  "demo.button": "Gọi API translate()",
+  "demo.result": "Kết quả",
+  "demo.api_result": "Xin chào từ API! ❤️💛",
+  "docs.button": "Xem Tài liệu",
+  "footer.message": "Được xây dựng với ❤️ sử dụng Vue3 Tiny Translation",
+  "attribution": "Được tạo bởi <a href=\"https://x.com/makio64\" target=\"_blank\" rel=\"noopener noreferrer\">Makio64</a>"
+} 
