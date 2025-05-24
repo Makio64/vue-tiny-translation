@@ -1,5 +1,8 @@
 <template>
   <div id="app">
+    <!-- Three.js Scene Container -->
+    <div ref="threeContainer" class="three-scene"></div>
+    
     <div class="app-container">
       <!-- GitHub Link -->
       <a href="https://github.com/makio64/vue3-tiny-translation" target="_blank" rel="noopener noreferrer" class="github-link">
@@ -12,13 +15,14 @@
         <h1 class="hero-title">{{ $t('hero.title') }}</h1>
         <p class="hero-subtitle">{{ $t('hero.subtitle') }}</p>
         
-        <div class="language-flags">
+        <div ref="languageFlags" class="language-flags">
           <button 
             v-for="lang in languages" 
             :key="lang.code"
             @click="changeLanguage(lang.code)"
             :class="['flag-btn', { active: currentLang === lang.code }]"
             :title="lang.name"
+            :data-flag="lang.flag"
           >
             {{ lang.flag }}
           </button>
@@ -26,20 +30,20 @@
       </header>
 
       <main class="features">
-        <div class="feature-grid">
+        <div ref="featureGrid" class="feature-grid">
           <div class="feature-card">
             <div class="feature-icon">🚀</div>
             <h3>{{ $t('features.tiny.title') }}</h3>
             <p>{{ $t('features.tiny.desc') }}</p>
           </div>
           
-          <div class="feature-card">
+          <div class="feature-card" >
             <div class="feature-icon">⚡</div>
             <h3>{{ $t('features.reactive.title') }}</h3>
             <p>{{ $t('features.reactive.desc') }}</p>
           </div>
           
-          <div class="feature-card">
+          <div class="feature-card" >
             <div class="feature-icon">🔧</div>
             <h3>{{ $t('features.simple.title') }}</h3>
             <p>{{ $t('features.simple.desc') }}</p>
@@ -48,13 +52,13 @@
             </a>
           </div>
           
-          <div class="feature-card">
+          <div class="feature-card" >
             <div class="feature-icon">🌐</div>
             <h3>{{ $t('features.dynamic.title') }}</h3>
             <p>{{ $t('features.dynamic.desc') }}</p>
           </div>
           
-          <div class="feature-card">
+          <div class="feature-card" >
             <div class="feature-icon">📦</div>
             <h3>{{ $t('features.typescript.title') }}</h3>
             <p>{{ $t('features.typescript.desc') }}</p>
@@ -84,6 +88,9 @@
 
 <script>
 import { translate, loadTranslations } from 'vue3-tiny-translation'
+import * as THREE from 'three'
+import { CSS3DRenderer, CSS3DObject } from 'three/addons/renderers/CSS3DRenderer.js'
+import { OrbitControls } from './OrbitControls.js'
 
 export default {
   name: 'App',
@@ -91,6 +98,12 @@ export default {
     return {
       currentLang: 'en',
       programmaticResult: null,
+      scene: null,
+      camera: null,
+      renderer: null,
+      controls: null,
+      languageObjects: [],
+      featureObjects: [],
       languages: [
         { code: 'fr', name: 'Français', flag: '🇫🇷' },
         { code: 'es', name: 'Español', flag: '🇪🇸' },
@@ -136,6 +149,17 @@ export default {
     
     this.currentLang = language
     await this.loadLanguage(language)
+    
+    // Initialize Three.js scene
+    this.initThree()
+    this.createFloatingElements()
+    this.animate()
+  },
+  
+  beforeUnmount() {
+    if (this.renderer) {
+      this.renderer.dispose()
+    }
   },
   methods: {
     async loadLanguage(language) {
@@ -157,12 +181,110 @@ export default {
     },
     translateProgrammatically() {
       this.programmaticResult = translate('demo.api_result', 'API call result!')
+    },
+    
+    initThree() {
+      // Scene
+      this.scene = new THREE.Scene()
+      
+      // Camera
+      this.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000)
+      this.camera.position.set(0, 0, 15)
+      
+      // CSS Renderer
+      this.renderer = new CSS3DRenderer()
+      this.renderer.setSize(window.innerWidth, window.innerHeight)
+      this.renderer.domElement.style.position = 'absolute'
+      this.renderer.domElement.style.inset = '0'
+      this.renderer.domElement.style.zIndex = '1'
+      this.$refs.threeContainer.appendChild(this.renderer.domElement)
+      
+      // Orbital Controls - Rotation only
+      this.controls = new OrbitControls(this.camera, this.renderer.domElement)
+      this.controls.enableDamping = true
+      this.controls.dampingFactor = 0.05
+      this.controls.enableZoom = false
+      this.controls.enablePan = false
+      this.controls.enableRotate = true
+      
+      // Limit vertical rotation range
+      this.controls.minPolarAngle = Math.PI * 0.4  
+      this.controls.maxPolarAngle = Math.PI * 0.6
+      
+      // Handle resize
+      window.addEventListener('resize', this.onWindowResize)
+    },
+    
+
+    
+    createFloatingElements() {
+      // Create floating flags
+      this.languages.forEach((lang, index) => {
+        const element = document.createElement('div')
+        element.className = 'floating-flag'
+        element.textContent = lang.flag
+        element.style.fontSize = '32px'
+        element.style.pointerEvents = 'none'
+        
+        const object = new CSS3DObject(element)
+        
+        // Random position
+        const radius = 350 + Math.random()*80
+        const angle = (index / this.languages.length) * Math.PI * 2
+        const y = (Math.random() - 0.5) * 300 // Random Y between -5 and 5
+        
+        object.position.x = Math.cos(angle) * radius
+        object.position.z = Math.sin(angle) * radius
+        object.position.y = y
+        
+        // Look at center
+        object.lookAt(0, 0, 0)
+        
+        this.scene.add(object)
+        this.languageObjects.push({ object, angle, radius, speed: 0.01 + Math.random() * 0.01 })
+      })
+    },
+    
+    animate() {
+      requestAnimationFrame(this.animate)
+      
+      // Animate floating objects
+      this.languageObjects.forEach(item => {
+        item.angle += item.speed * 0.05
+        item.object.position.x = Math.cos(item.angle) * item.radius
+        item.object.position.z = Math.sin(item.angle) * item.radius
+        item.object.lookAt(0, 0, 0)
+      })
+      
+      this.controls.update()
+      this.renderer.render(this.scene, this.camera)
+    },
+    
+    onWindowResize() {
+      this.camera.aspect = window.innerWidth / window.innerHeight
+      this.camera.updateProjectionMatrix()
+      this.renderer.setSize(window.innerWidth, window.innerHeight)
     }
   }
 }
 </script>
 
 <style>
+:root {
+  --bg-dark: rgba(40, 40, 40, 0.6);
+  --bg-darker: rgba(50, 50, 50, 0.7);
+  --bg-button: rgba(60, 60, 60, 0.8);
+  --bg-button-hover: rgba(80, 80, 80, 0.8);
+  --border-subtle: rgba(60, 60, 60, 0.5);
+  --border-light: rgba(100, 100, 100, 0.3);
+  --text-primary: #e8e8e8;
+  --text-secondary: #aaa;
+  --text-muted: #888;
+  --transition: all 0.2s ease;
+  --border-radius: 6px;
+  --spacing: 20px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -174,19 +296,44 @@ export default {
   min-height: 100vh;
   background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
   color: #e6e6e6;
+  position: relative;
+  user-select: none;
+}
+
+.three-scene {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+}
+
+.floating-flag,
+.floating-feature {
+  color: rgba(255, 255, 255, 0.6);
+  user-select: none;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  will-change: transform;
+}
+
+.floating-flag:hover,
+.floating-feature:hover {
+  opacity: 1;
 }
 
 .app-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: var(--spacing);
   position: relative;
+  z-index: 10;
+  user-select: none;
+  pointer-events: none;
 }
 
 .github-link {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: var(--spacing);
+  right: var(--spacing);
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -199,11 +346,11 @@ export default {
   text-decoration: none;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(100, 100, 100, 0.3);
+  border: 1px solid var(--border-light);
 }
 
 .github-link:hover {
-  background: rgba(80, 80, 80, 0.9);
+  background: var(--bg-button-hover);
   transform: scale(1.1);
   color: #fff;
   border-color: rgba(120, 120, 120, 0.5);
@@ -211,7 +358,7 @@ export default {
 
 .hero {
   text-align: center;
-  padding: 40px 20px;
+  padding: 40px var(--spacing);
   color: white;
 }
 
@@ -219,16 +366,14 @@ export default {
   font-size: 2.2rem;
   font-weight: 600;
   margin-bottom: 16px;
-  color: #e8e8e8;
+  color: var(--text-primary);
 }
 
 .hero-subtitle {
   font-size: 1rem;
-  color: #888;
-  margin-bottom: 32px;
+  color: var(--text-muted);
+  margin: 0 auto 32px;
   max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
   line-height: 1.5;
 }
 
@@ -237,22 +382,20 @@ export default {
   justify-content: center;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 24px;
+  margin: 24px auto 0;
   max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .flag-btn {
-  
   background: rgba(60, 60, 60, 0.3);
-  border: 1px solid rgba(100, 100, 100, 0.3);
-  border-radius: 6px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--border-radius);
   width: 44px;
   height: 36px;
   font-size: 16px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: var(--transition);
+  pointer-events: auto;
 }
 
 .flag-btn:hover {
@@ -266,7 +409,7 @@ export default {
 }
 
 .features {
-  padding: 32px 20px;
+  padding: 32px var(--spacing);
 }
 
 .feature-grid {
@@ -278,16 +421,16 @@ export default {
 }
 
 .feature-card {
-  background: rgba(40, 40, 40, 0.6);
+  background: var(--bg-dark);
   border-radius: 8px;
-  padding: 20px;
+  padding: var(--spacing);
   text-align: left;
-  border: 1px solid rgba(60, 60, 60, 0.5);
-  transition: all 0.2s ease;
+  border: 1px solid var(--border-subtle);
+  transition: var(--transition);
 }
 
 .feature-card:hover {
-  background: rgba(50, 50, 50, 0.7);
+  background: var(--bg-darker);
   border-color: rgba(80, 80, 80, 0.7);
 }
 
@@ -301,28 +444,29 @@ export default {
   font-size: 1.1rem;
   font-weight: 500;
   margin-bottom: 8px;
-  color: #e8e8e8;
+  color: var(--text-primary);
 }
 
 .feature-card p {
-  color: #aaa;
+  color: var(--text-secondary);
   line-height: 1.4;
   font-size: 0.9rem;
 }
 
 .demo-card {
-  background: rgba(50, 50, 50, 0.6);
+  background: var(--bg-darker);
   border: 1px solid rgba(70, 70, 70, 0.5);
   color: white;
 }
 
 .demo-card h3,
 .demo-card p {
-  color: #e8e8e8;
+  color: var(--text-primary);
 }
 
-.demo-btn {
-  background: rgba(60, 60, 60, 0.8);
+.demo-btn,
+.docs-btn {
+  background: var(--bg-button);
   color: #ccc;
   border: 1px solid rgba(80, 80, 80, 0.7);
   padding: 8px 16px;
@@ -330,14 +474,22 @@ export default {
   cursor: pointer;
   font-weight: 400;
   margin-top: 12px;
-  transition: all 0.2s ease;
+  transition: var(--transition);
   font-size: 0.9rem;
+  pointer-events: auto;
+  text-decoration: none;
+  display: inline-block;
 }
 
-.demo-btn:hover {
-  background: rgba(80, 80, 80, 0.8);
+.demo-btn:hover,
+.docs-btn:hover {
+  background: var(--bg-button-hover);
   border-color: rgba(100, 100, 100, 0.8);
   color: #fff;
+}
+
+.docs-btn:hover {
+  transform: translateY(-1px);
 }
 
 .demo-result {
@@ -345,7 +497,7 @@ export default {
   padding: 12px;
   background: rgba(30, 30, 30, 0.8);
   border-radius: 4px;
-  border: 1px solid rgba(60, 60, 60, 0.5);
+  border: 1px solid var(--border-subtle);
 }
 
 .demo-result code {
@@ -353,33 +505,13 @@ export default {
   color: #ddd;
   padding: 2px 6px;
   border-radius: 3px;
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-family: inherit;
   font-size: 0.85rem;
-}
-
-.docs-btn {
-  display: inline-block;
-  background: rgba(70, 70, 70, 0.8);
-  color: #ddd;
-  padding: 8px 16px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-size: 0.9rem;
-  margin-top: 12px;
-  transition: all 0.2s ease;
-  border: 1px solid rgba(90, 90, 90, 0.7);
-}
-
-.docs-btn:hover {
-  background: rgba(90, 90, 90, 0.8);
-  color: #fff;
-  border-color: rgba(110, 110, 110, 0.8);
-  transform: translateY(-1px);
 }
 
 .footer {
   text-align: center;
-  padding: 24px 20px;
+  padding: 24px var(--spacing);
   color: #666;
   font-size: 0.8rem;
 }
@@ -390,39 +522,22 @@ export default {
 }
 
 .attribution a {
-  color: #888;
+  color: var(--text-muted);
   text-decoration: none;
   border-bottom: 1px solid transparent;
-  transition: all 0.2s ease;
+  transition: var(--transition);
 }
 
 .attribution a:hover {
   color: #ccc;
-  border-bottom-color: #888;
+  border-bottom-color: var(--text-muted);
 }
 
 @media (max-width: 768px) {
-  .hero-title {
-    font-size: 2rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 0.9rem;
-  }
-  
-  .feature-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-  
-  .language-flags {
-    gap: 6px;
-  }
-  
-  .flag-btn {
-    width: 36px;
-    height: 28px;
-    font-size: 14px;
-  }
+  .hero-title { font-size: 2rem; }
+  .hero-subtitle { font-size: 0.9rem; }
+  .feature-grid { grid-template-columns: 1fr; gap: 12px; }
+  .language-flags { gap: 6px; }
+  .flag-btn { width: 36px; height: 28px; font-size: 14px; }
 }
 </style> 
