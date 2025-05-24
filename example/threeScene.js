@@ -46,7 +46,7 @@ export class ThreeScene {
     this.controls.dampingFactor = 0.05
     this.controls.enableZoom = false
     this.controls.enablePan = false
-    this.controls.enableRotate = !isMobile()
+    this.controls.enableRotate = !this.isMobile()
 		this.controls.minPolarAngle = Math.PI * 0.4  
 		this.controls.maxPolarAngle = Math.PI * 0.6
   }
