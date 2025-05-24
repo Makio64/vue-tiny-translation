@@ -1,7 +1,7 @@
 {
   "loading": "Loading translations, mate...",
   "hero.title": "Vue3 Tiny Translation",
-  "hero.subtitle": "A minimalist reactive translation plugin for Vue 3. Super lightweight & simple.",
+  "hero.subtitle": "A minimalist reactive translation plugin for Vue 3. Super lightweight & simple ✨",
   "features.tiny.title": "Tiny",
   "features.tiny.desc": "Minimal footprint, maximum performance",
   "features.reactive.title": "Reactive",
