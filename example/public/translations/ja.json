@@ -1,6 +1,6 @@
 {
   "loading": "翻訳を読み込み中...",
-  "hero.title": "Vue3 Tiny Translation",
+  "hero.title": "Vue Tiny Translation",
   "hero.subtitle": "Vue 3用のミニマリストなリアクティブ翻訳プラグイン。超軽量でシンプル ✨",
   "features.tiny.title": "超軽量",
   "features.tiny.desc": "最小フットプリント（0.32KB gzip圧縮）、最大パフォーマンス",

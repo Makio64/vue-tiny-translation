@@ -1,6 +1,6 @@
 {
   "loading": "Chargement des traductions... comme une baguette au four ! 🥖",
-  "hero.title": "Vue3 Tiny Translation",
+  "hero.title": "Vue Tiny Translation",
   "hero.subtitle": "Plugin de traduction réactif minimaliste pour Vue 3. Simple et super léger 🍷✨",
   "features.tiny.title": "Minuscule",
   "features.tiny.desc": "Empreinte minimale (0,32Ko gzippé), performance maximale ! 🥐",

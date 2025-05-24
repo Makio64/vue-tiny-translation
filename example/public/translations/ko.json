@@ -1,6 +1,6 @@
 {
   "loading": "번역을 로딩 중...",
-  "hero.title": "Vue3 Tiny Translation",
+  "hero.title": "Vue Tiny Translation",
   "hero.subtitle": "Vue 3용 미니멀 반응형 번역 플러그인. 초경량이며 간단함 ✨",
   "features.tiny.title": "초소형",
   "features.tiny.desc": "최소 풋프린트, 최대 성능",

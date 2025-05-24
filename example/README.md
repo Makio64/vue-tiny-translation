@@ -1,4 +1,4 @@
-# Vue3 Tiny Translation - Example 🌍✨
+# Vue Tiny Translation - Example 🌍✨
 
 This is a working example demonstrating how to use the vue-tiny-translation plugin.
 
