@@ -433,7 +433,7 @@ export default {
   height: 36px;
   font-size: 16px;
   cursor: pointer;
-  transition: var(--transition);
+  transition: background 0.2s ease, border-color 0.2s ease;
   pointer-events: auto;
 }
 
