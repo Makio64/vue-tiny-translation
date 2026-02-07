@@ -7,32 +7,32 @@ import { reactive } from 'vue'
 
 const _translations = reactive({})
 
-// Function to translate a key, can be used outside of Vue components
-function translate(key, defaultValue = null) {
-	const translation = _translations[key]
-	if (translation !== '' && !translation) {
-		console.warn(`${key} key does not exist in translations`)
-		return defaultValue || key
-	}
-	return translation
+function translate(key, defaultValue) {
+	if (key in _translations) return _translations[key]
+	console.warn(`Missing translation: ${key}`)
+	return defaultValue ?? key
 }
 
-// Async function to load translations and update the reactive object
+function setTranslations(newTranslations) {
+	for (const k in _translations) delete _translations[k]
+	Object.assign(_translations, newTranslations)
+}
+
 async function loadTranslations(path = '/translations/en.json') {
-	const json = await fetch(path).then((response) => response.json())
-	// Clear existing translations
-	Object.keys(_translations).forEach((key) => delete _translations[key])
-	// Assign new translations
-	Object.assign(_translations, json)
+	const r = await fetch(path)
+	if (!r.ok) throw new Error(`Failed: ${path} ${r.status}`)
+	setTranslations(await r.json())
+}
+
+function useTranslation() {
+	return { t: translate, loadTranslations, setTranslations }
 }
 
 export default {
-	// Install the plugin in Vue; $t(key) will be available in Vue components
 	install(app, translations = {}) {
 		Object.assign(_translations, translations)
-		app.config.globalProperties.$t = (key, defaultValue = null) => translate(key, defaultValue)
+		app.config.globalProperties.$t = translate
 	},
 }
 
-// Export the function to translate a key, can be used outside of Vue components
-export { translate, loadTranslations } 
+export { translate, loadTranslations, setTranslations, useTranslation } 

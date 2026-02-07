@@ -1,6 +1,6 @@
 # Vue Tiny Translation 🌍✨
 
-A minimalist reactive translation plugin for Vue 3. Super lightweight (**0.32KB gzipped**), simple, and efficient internationalization solution.
+A minimalist reactive translation plugin for Vue 3. Super lightweight (**0.35KB gzipped**), simple, and efficient internationalization solution.
 
 🌐 **[Live Demo](https://vue-tiny-translation.netlify.app/)** - Try it now !
 [<img width="1005" alt="Screenshot 2025-05-24 at 18 40 31" src="https://github.com/user-attachments/assets/deae1302-a9c7-48d0-a63f-5bce37b83cd8" />](https://vue-tiny-translation.netlify.app/)

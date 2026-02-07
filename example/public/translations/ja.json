@@ -3,7 +3,7 @@
   "hero.title": "Vue Tiny Translation",
   "hero.subtitle": "Vue 3用のミニマリストなリアクティブ翻訳プラグイン。超軽量でシンプル ✨",
   "features.tiny.title": "超軽量",
-  "features.tiny.desc": "最小フットプリント（0.32KB gzip圧縮）、最大パフォーマンス",
+  "features.tiny.desc": "最小フットプリント（0.35KB gzip圧縮）、最大パフォーマンス",
   "features.reactive.title": "リアクティブ",
   "features.reactive.desc": "翻訳が変更されたときにコンポーネントを自動更新、ページのリロードなし！",
   "features.simple.title": "シンプルAPI",

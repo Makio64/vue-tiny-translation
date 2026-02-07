@@ -3,7 +3,7 @@
   "hero.title": "Vue Tiny Translation",
   "hero.subtitle": "A minimalist reactive translation plugin for Vue 3. Super lightweight & simple ✨",
   "features.tiny.title": "Tiny",
-  "features.tiny.desc": "Minimal footprint (0.32KB gzipped), maximum performance",
+  "features.tiny.desc": "Minimal footprint (0.35KB gzipped), maximum performance",
   "features.reactive.title": "Reactive",
   "features.reactive.desc": "Automatically updates components when translations change, no page reload!",
   "features.simple.title": "Simple API",
