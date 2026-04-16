@@ -9,12 +9,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "animejs": "^4.3.5",
-    "three": "^0.182.0",
-    "vue": "^3.5.27"
+    "animejs": "^4.3.6",
+    "three": "^0.183.2",
+    "vue": "^3.5.32"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^6.0.4",
-    "vite": "^7.3.1"
+    "@vitejs/plugin-vue": "^6.0.6",
+    "vite": "^8.0.8"
   }
 }

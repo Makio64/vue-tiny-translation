@@ -42,6 +42,24 @@ describe('translate', () => {
 		expect(warn).toHaveBeenCalledWith('Missing translation: missing')
 		warn.mockRestore()
 	})
+
+	it('warns only once per missing key', () => {
+		const warn = vi.spyOn(console, 'warn').mockImplementation(() => {})
+		translate('once')
+		translate('once')
+		translate('once')
+		expect(warn).toHaveBeenCalledTimes(1)
+		warn.mockRestore()
+	})
+
+	it('re-warns for a missing key after setTranslations resets the dictionary', () => {
+		const warn = vi.spyOn(console, 'warn').mockImplementation(() => {})
+		translate('gone')
+		setTranslations({ something: 'else' })
+		translate('gone')
+		expect(warn).toHaveBeenCalledTimes(2)
+		warn.mockRestore()
+	})
 })
 
 describe('setTranslations', () => {

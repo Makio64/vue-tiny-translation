@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.2.0
+
+### Breaking
+
+- **Dropped the CommonJS build.** `vue-tiny-translation` is now ESM-only. The old CJS entry at `dist/index.js` had been silently broken since `"type": "module"` was set (it returned an empty object on `require()`), and Vue 3's ecosystem is ESM-first. Consumers that still need CJS must pin to v1.1.x.
+
+### Bug Fixes
+
+- `translate()` now truly warns only **once** per missing key, matching what v1.1.0 advertised — the previous release warned on every call. The warning cache resets when `setTranslations()` or `loadTranslations()` replaces the dictionary.
+
+### Package & Build
+
+- Production bundle shrunk from **362 → 346 bytes gzipped** (-16 B). The `console.warn` and its guard Set are now stripped from the minified build via terser `pure_funcs`, so the warning only exists in dev.
+- `exports` map now exposes `development` and `production` conditions — modern bundlers (Vite, Webpack 5, Rollup) automatically pick the warn-stripped minified build in production, and the warning-enabled build in development.
+- `module` and `import` now default to the minified build, so tools that don't understand conditions still get the tiny bundle.
+- `install()` now reuses `setTranslations()` for consistency; initializing the plugin with translations also clears any stale missing-key warnings.
+
 ## 1.1.0
 
 ### Bug Fixes

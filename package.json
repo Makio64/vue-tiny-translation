@@ -3,14 +3,14 @@
   "version": "1.1.0",
   "description": "A minimalist reactive translation plugin for Vue 3. Super lightweight (0.35KB gzipped).",
   "type": "module",
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
+  "module": "dist/index.esm.min.js",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.esm.js",
-      "require": "./dist/index.js"
+      "development": "./dist/index.esm.js",
+      "production": "./dist/index.esm.min.js",
+      "import": "./dist/index.esm.min.js"
     }
   },
   "sideEffects": false,
@@ -31,10 +31,15 @@
     "i18n",
     "translation",
     "internationalization",
+    "localization",
+    "l10n",
     "reactive",
     "plugin",
     "tiny",
-    "minimalist"
+    "lightweight",
+    "minimalist",
+    "vite",
+    "nuxt"
   ],
   "author": "Makio64 | David Ronai",
   "license": "MIT",
@@ -50,10 +55,10 @@
     "vue": "^3.0.0"
   },
   "devDependencies": {
-    "@rollup/plugin-terser": "^0.4.4",
-    "rollup": "^4.45.1",
-    "typescript": "^5.8.3",
-    "vitest": "^4.0.18"
+    "@rollup/plugin-terser": "^1.0.0",
+    "rollup": "^4.60.1",
+    "typescript": "^6.0.2",
+    "vitest": "^4.1.4"
   },
-  "packageManager": "pnpm@10.13.1"
+  "packageManager": "pnpm@10.33.0"
 }

@@ -6,15 +6,25 @@
 import { reactive } from 'vue'
 
 const _translations = reactive({})
+const _warned = new Set()
+
+function warn(key) {
+	if (_warned.has(key)) return
+	_warned.add(key)
+	console.warn(`Missing translation: ${key}`)
+}
+
+function clearWarned() { _warned.clear() }
 
 function translate(key, defaultValue) {
 	if (key in _translations) return _translations[key]
-	console.warn(`Missing translation: ${key}`)
+	warn(key)
 	return defaultValue ?? key
 }
 
 function setTranslations(newTranslations) {
 	for (const k in _translations) delete _translations[k]
+	clearWarned()
 	Object.assign(_translations, newTranslations)
 }
 
@@ -30,7 +40,7 @@ function useTranslation() {
 
 export default {
 	install(app, translations = {}) {
-		Object.assign(_translations, translations)
+		setTranslations(translations)
 		app.config.globalProperties.$t = translate
 	},
 }
