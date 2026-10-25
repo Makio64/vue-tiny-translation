@@ -1,0 +1,2 @@
+overrides:
+  "@vue/server-renderer": ^3.5.42
